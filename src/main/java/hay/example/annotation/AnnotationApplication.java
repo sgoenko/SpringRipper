@@ -20,10 +20,11 @@ public class AnnotationApplication {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-            while (true) {
-                ctx.getBean(Quoter.class).sayQuote();
-                Thread.sleep(100);
-            }
+
+//            while (true) {
+//                ctx.getBean(Quoter.class).sayQuote();
+//                Thread.sleep(100);
+//            }
         };
     }
 
