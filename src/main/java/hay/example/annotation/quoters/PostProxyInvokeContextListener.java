@@ -23,21 +23,22 @@ public class PostProxyInvokeContextListener implements ApplicationListener<Conte
         for (String name : names) {
             BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
             String originalClassName = beanDefinition.getBeanClassName();
-
-            try {
-                Class<?> originalClass = Class.forName(originalClassName);
-                Method[] methods = originalClass.getMethods();
-                for (Method method : methods) {
-                    if (method.isAnnotationPresent(PostProxy.class)) {
-                        Object bean = context.getBean(name);
-                        Method currentMethod = bean.getClass()
-                                .getMethod(method.getName(), method.getParameterTypes());
-                        currentMethod.invoke(bean);
+            if (originalClassName != null) {
+                try {
+                    Class<?> originalClass = Class.forName(originalClassName);
+                    Method[] methods = originalClass.getMethods();
+                    for (Method method : methods) {
+                        if (method.isAnnotationPresent(PostProxy.class)) {
+                            Object bean = context.getBean(name);
+                            Method currentMethod = bean.getClass()
+                                    .getMethod(method.getName(), method.getParameterTypes());
+                            currentMethod.invoke(bean);
+                        }
                     }
-                }
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
 
