@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.Annotation;
 
 @Component
-public class DeprecatedClassBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+public class DeprecatedClassAnnotationBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         String[] names = beanFactory.getBeanDefinitionNames();
