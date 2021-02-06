@@ -16,15 +16,9 @@ public class AnnotationApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(AnnotationApplication.class, args);
         ctx.getBean(Quoter.class).sayQuote();
 
+        System.out.println("test1");
+
     }
 
 }
 
-@Component
-class QuoterRunner implements CommandLineRunner {
-
-    @Override
-    public void run(String... args) throws Exception {
-
-    }
-}
