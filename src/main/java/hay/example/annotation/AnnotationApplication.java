@@ -16,7 +16,7 @@ public class AnnotationApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(AnnotationApplication.class, args);
         ctx.getBean(Quoter.class).sayQuote();
 
-        System.out.println("test1");
+        System.out.println("test3");
 
     }
 
